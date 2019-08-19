@@ -21,9 +21,17 @@ public struct MovieSearchResponse: Decodable {
 	
 	public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		response = try values.decodeIfPresent(Bool.self, forKey: .response)
+		if let responseValue = try? values.decodeIfPresent(String.self, forKey: .response), responseValue.lowercased() == "true" {
+			response = true
+		} else {
+			response = false
+		}
+		if let totalResultsValue = try values.decodeIfPresent(String.self, forKey: .totalResults), let value = Int(totalResultsValue) {
+			totalResults = value
+		} else {
+			totalResults = 0
+		}
 		search = try values.decodeIfPresent([Search].self, forKey: .search)
-		totalResults = try values.decodeIfPresent(Int.self, forKey: .totalResults)
 	}
 }
 

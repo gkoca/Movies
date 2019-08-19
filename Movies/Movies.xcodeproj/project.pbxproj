@@ -18,9 +18,8 @@
 		E827212B230AF77C0007ECD0 /* MovieSearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827212A230AF77C0007ECD0 /* MovieSearchListViewController.swift */; };
 		E827212D230AF79D0007ECD0 /* MovieSearchListContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827212C230AF79D0007ECD0 /* MovieSearchListContracts.swift */; };
 		E827212F230AF7D00007ECD0 /* MovieSearchList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E827212E230AF7D00007ECD0 /* MovieSearchList.storyboard */; };
-		E827217D230B1E460007ECD0 /* OMDBApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; };
-		E827217E230B1E460007ECD0 /* OMDBApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E8272183230B1EC50007ECD0 /* OMDBApi.framework in Copu Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E8272189230B2FA20007ECD0 /* OMDBApi.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E827218B230B2FBF0007ECD0 /* OMDBApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,36 +44,18 @@
 			remoteGlobalIDString = E8272143230AFE660007ECD0;
 			remoteInfo = OMDBApiTests;
 		};
-		E827217F230B1E460007ECD0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E8272174230B1E150007ECD0 /* OMDBApi.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E8272139230AFE660007ECD0;
-			remoteInfo = OMDBApi;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E8272181230B1E460007ECD0 /* Embed Frameworks */ = {
+		E8272188230B2F8C0007ECD0 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E827217E230B1E460007ECD0 /* OMDBApi.framework in Embed Frameworks */,
+				E8272189230B2FA20007ECD0 /* OMDBApi.framework in Copy Frameworks */,
 			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E8272182230B1EB00007ECD0 /* Copu Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E8272183230B1EC50007ECD0 /* OMDBApi.framework in Copu Frameworks */,
-			);
-			name = "Copu Frameworks";
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -103,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E827217D230B1E460007ECD0 /* OMDBApi.framework in Frameworks */,
+				E827218B230B2FBF0007ECD0 /* OMDBApi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +105,7 @@
 				E82720F9230AF45D0007ECD0 /* Movies */,
 				E827210E230AF45E0007ECD0 /* MoviesTests */,
 				E82720F8230AF45D0007ECD0 /* Products */,
+				E827218A230B2FBF0007ECD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,6 +210,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E827218A230B2FBF0007ECD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,13 +228,11 @@
 				E82720F4230AF45D0007ECD0 /* Frameworks */,
 				E82720F5230AF45D0007ECD0 /* Resources */,
 				E8272154230B02790007ECD0 /* ShellScript */,
-				E8272181230B1E460007ECD0 /* Embed Frameworks */,
-				E8272182230B1EB00007ECD0 /* Copu Frameworks */,
+				E8272188230B2F8C0007ECD0 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E8272180230B1E460007ECD0 /* PBXTargetDependency */,
 			);
 			name = Movies;
 			productName = Movies;
@@ -402,11 +389,6 @@
 			target = E82720F6230AF45D0007ECD0 /* Movies */;
 			targetProxy = E827210C230AF45E0007ECD0 /* PBXContainerItemProxy */;
 		};
-		E8272180230B1E460007ECD0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OMDBApi;
-			targetProxy = E827217F230B1E460007ECD0 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -540,7 +522,6 @@
 		E8272115230AF45E0007ECD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K35J6EG8VZ;
@@ -559,7 +540,6 @@
 		E8272116230AF45E0007ECD0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K35J6EG8VZ;

@@ -32,9 +32,11 @@ public class OMDBApiService: MovieServiceProtocol {
 	}
 	
 	public init() {
-		if let key = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String {
+		
+		
+		if let key = Bundle(for: type(of: self)).object(forInfoDictionaryKey: "API_KEY") as? String {
 			apiKey = key
-			baseUrl = "http://www.omdbapi.com/?apikey=[\(apiKey)]&"
+			baseUrl = "https://www.omdbapi.com/?apikey=\(apiKey)&"
 		} else {
 			fatalError("can not get api key")
 		}

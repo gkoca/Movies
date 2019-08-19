@@ -34,7 +34,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 7;
+			dstSubfolderSpec = 10;
 			files = (
 				E827216E230B1D600007ECD0 /* Alamofire.framework in Copy Frameworks */,
 			);
