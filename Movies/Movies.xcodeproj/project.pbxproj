@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E82720FB230AF45D0007ECD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82720FA230AF45D0007ECD0 /* AppDelegate.swift */; };
-		E82720FD230AF45D0007ECD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82720FC230AF45D0007ECD0 /* ViewController.swift */; };
 		E8272102230AF45E0007ECD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8272101230AF45E0007ECD0 /* Assets.xcassets */; };
 		E8272105230AF45E0007ECD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8272103230AF45E0007ECD0 /* LaunchScreen.storyboard */; };
 		E8272110230AF45E0007ECD0 /* MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827210F230AF45E0007ECD0 /* MoviesTests.swift */; };
@@ -19,6 +18,9 @@
 		E827212B230AF77C0007ECD0 /* MovieSearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827212A230AF77C0007ECD0 /* MovieSearchListViewController.swift */; };
 		E827212D230AF79D0007ECD0 /* MovieSearchListContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827212C230AF79D0007ECD0 /* MovieSearchListContracts.swift */; };
 		E827212F230AF7D00007ECD0 /* MovieSearchList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E827212E230AF7D00007ECD0 /* MovieSearchList.storyboard */; };
+		E827217D230B1E460007ECD0 /* OMDBApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; };
+		E827217E230B1E460007ECD0 /* OMDBApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E8272183230B1EC50007ECD0 /* OMDBApi.framework in Copu Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,12 +31,57 @@
 			remoteGlobalIDString = E82720F6230AF45D0007ECD0;
 			remoteInfo = Movies;
 		};
+		E8272179230B1E150007ECD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8272174230B1E150007ECD0 /* OMDBApi.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E827213A230AFE660007ECD0;
+			remoteInfo = OMDBApi;
+		};
+		E827217B230B1E150007ECD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8272174230B1E150007ECD0 /* OMDBApi.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8272143230AFE660007ECD0;
+			remoteInfo = OMDBApiTests;
+		};
+		E827217F230B1E460007ECD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8272174230B1E150007ECD0 /* OMDBApi.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E8272139230AFE660007ECD0;
+			remoteInfo = OMDBApi;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E8272181230B1E460007ECD0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E827217E230B1E460007ECD0 /* OMDBApi.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8272182230B1EB00007ECD0 /* Copu Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E8272183230B1EC50007ECD0 /* OMDBApi.framework in Copu Frameworks */,
+			);
+			name = "Copu Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E82720F7230AF45D0007ECD0 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E82720FA230AF45D0007ECD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E82720FC230AF45D0007ECD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E8272101230AF45E0007ECD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8272104230AF45E0007ECD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8272106230AF45E0007ECD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +95,7 @@
 		E827212A230AF77C0007ECD0 /* MovieSearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchListViewController.swift; sourceTree = "<group>"; };
 		E827212C230AF79D0007ECD0 /* MovieSearchListContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchListContracts.swift; sourceTree = "<group>"; };
 		E827212E230AF7D00007ECD0 /* MovieSearchList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieSearchList.storyboard; sourceTree = "<group>"; };
+		E8272174230B1E150007ECD0 /* OMDBApi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OMDBApi.xcodeproj; path = ../OMDBApi/OMDBApi.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E827217D230B1E460007ECD0 /* OMDBApi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +120,7 @@
 		E82720EE230AF45D0007ECD0 = {
 			isa = PBXGroup;
 			children = (
+				E8272173230B1E030007ECD0 /* Modules */,
 				E82720F9230AF45D0007ECD0 /* Movies */,
 				E827210E230AF45E0007ECD0 /* MoviesTests */,
 				E82720F8230AF45D0007ECD0 /* Products */,
@@ -93,7 +143,6 @@
 				E827211C230AF4910007ECD0 /* App */,
 				E8272121230AF5BD0007ECD0 /* Resources */,
 				E8272122230AF5D90007ECD0 /* Supporting Files */,
-				E82720FC230AF45D0007ECD0 /* ViewController.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -162,6 +211,23 @@
 			path = MovieDetail;
 			sourceTree = "<group>";
 		};
+		E8272173230B1E030007ECD0 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E8272174230B1E150007ECD0 /* OMDBApi.xcodeproj */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		E8272175230B1E150007ECD0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E827217A230B1E150007ECD0 /* OMDBApi.framework */,
+				E827217C230B1E150007ECD0 /* OMDBApiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,10 +238,14 @@
 				E82720F3230AF45D0007ECD0 /* Sources */,
 				E82720F4230AF45D0007ECD0 /* Frameworks */,
 				E82720F5230AF45D0007ECD0 /* Resources */,
+				E8272154230B02790007ECD0 /* ShellScript */,
+				E8272181230B1E460007ECD0 /* Embed Frameworks */,
+				E8272182230B1EB00007ECD0 /* Copu Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E8272180230B1E460007ECD0 /* PBXTargetDependency */,
 			);
 			name = Movies;
 			productName = Movies;
@@ -230,6 +300,12 @@
 			mainGroup = E82720EE230AF45D0007ECD0;
 			productRefGroup = E82720F8230AF45D0007ECD0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E8272175230B1E150007ECD0 /* Products */;
+					ProjectRef = E8272174230B1E150007ECD0 /* OMDBApi.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E82720F6230AF45D0007ECD0 /* Movies */,
@@ -237,6 +313,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E827217A230B1E150007ECD0 /* OMDBApi.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OMDBApi.framework;
+			remoteRef = E8272179230B1E150007ECD0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E827217C230B1E150007ECD0 /* OMDBApiTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OMDBApiTests.xctest;
+			remoteRef = E827217B230B1E150007ECD0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E82720F5230AF45D0007ECD0 /* Resources */ = {
@@ -258,6 +351,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E8272154230B02790007ECD0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E82720F3230AF45D0007ECD0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -266,7 +379,6 @@
 				E8272129230AF76B0007ECD0 /* MovieSearchListBuilder.swift in Sources */,
 				E8272127230AF7150007ECD0 /* MovieSearchListViewModel.swift in Sources */,
 				E8272120230AF4F50007ECD0 /* AppRouter.swift in Sources */,
-				E82720FD230AF45D0007ECD0 /* ViewController.swift in Sources */,
 				E827212D230AF79D0007ECD0 /* MovieSearchListContracts.swift in Sources */,
 				E827212B230AF77C0007ECD0 /* MovieSearchListViewController.swift in Sources */,
 				E82720FB230AF45D0007ECD0 /* AppDelegate.swift in Sources */,
@@ -289,6 +401,11 @@
 			isa = PBXTargetDependency;
 			target = E82720F6230AF45D0007ECD0 /* Movies */;
 			targetProxy = E827210C230AF45E0007ECD0 /* PBXContainerItemProxy */;
+		};
+		E8272180230B1E460007ECD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OMDBApi;
+			targetProxy = E827217F230B1E460007ECD0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -423,6 +540,7 @@
 		E8272115230AF45E0007ECD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K35J6EG8VZ;
@@ -441,6 +559,7 @@
 		E8272116230AF45E0007ECD0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K35J6EG8VZ;

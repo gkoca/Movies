@@ -11,7 +11,6 @@ import Foundation
 final class MovieSearchListViewModel: MovieSearchListViewModelProtocol {
 	var delegate: MovieSearchListViewModelDelegate?
 	
-	
 	init() { // TODO: with service
 
 	}

@@ -4,4 +4,7 @@
    <FileRef
       location = "group:Movies/Movies.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:OMDBApi/OMDBApi.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -14,5 +14,10 @@ final class MovieSearchListViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		debugPrint("viewDidLoad")
+		app.service.searchMovies { (response) in
+			debugPrint(response)
+		}
+		
 	}
 }

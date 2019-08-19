@@ -7,11 +7,11 @@
 //
 
 import Foundation
+import OMDBApi
 
 let app = AppContainer()
 
 final class AppContainer {
-	
 	let router = AppRouter()
-	//TODO: service
+	let service = OMDBApiService()
 }
