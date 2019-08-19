@@ -1,5 +1,5 @@
 //
-//  MovieSearchResponse.swift
+//  MovieSearch.swift
 //  OMDBApi
 //
 //  Created by Gökhan KOCA on 19.08.2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct MovieSearchResponse: Decodable {
+public struct MovieSearch: Decodable {
 	let response: Bool?
 	let search: [Search]?
 	let totalResults: Int?
@@ -36,12 +36,8 @@ public struct MovieSearchResponse: Decodable {
 }
 
 public struct Search: Decodable {
-	let imdbID : String?
-	let poster : String?
-	let title : String?
-	let type : String?
-	let year : String?
-	
+	let imdbID, poster, title, type, year: String?
+
 	enum CodingKeys: String, CodingKey {
 		case imdbID = "imdbID"
 		case poster = "Poster"

@@ -105,7 +105,6 @@
 				E82720F9230AF45D0007ECD0 /* Movies */,
 				E827210E230AF45E0007ECD0 /* MoviesTests */,
 				E82720F8230AF45D0007ECD0 /* Products */,
-				E827218A230B2FBF0007ECD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,13 +207,6 @@
 				E827217C230B1E150007ECD0 /* OMDBApiTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E827218A230B2FBF0007ECD0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

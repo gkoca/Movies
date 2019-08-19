@@ -14,9 +14,15 @@ final class MovieSearchListViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		debugPrint("viewDidLoad")
+		
 		app.service.searchMovies { (response) in
 			debugPrint(response)
+			debugPrint("==================================================")
+		}
+		
+		app.service.fetchMovieDetailByTitle("superman") { (response) in
+			debugPrint(response)
+			debugPrint("==================================================")
 		}
 		
 	}
