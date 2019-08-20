@@ -9,9 +9,9 @@
 import Foundation
 
 public struct MovieSearch: Decodable {
-	let response: Bool?
-	let search: [Search]?
-	let totalResults: Int?
+	public let response: Bool?
+	public let search: [Search]?
+	public let totalResults: Int?
 	
 	enum CodingKeys: String, CodingKey {
 		case response = "Response"
@@ -36,7 +36,7 @@ public struct MovieSearch: Decodable {
 }
 
 public struct Search: Decodable {
-	let imdbID, poster, title, type, year: String?
+	public let imdbID, poster, title, type, year: String?
 
 	enum CodingKeys: String, CodingKey {
 		case imdbID = "imdbID"

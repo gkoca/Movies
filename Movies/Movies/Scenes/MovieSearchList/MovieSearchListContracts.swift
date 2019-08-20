@@ -6,14 +6,36 @@
 //  Copyright © 2019 gkoca. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol MovieSearchListViewModelProtocol {
 	var delegate: MovieSearchListViewModelDelegate? { get set }
-	func load()
+	func search(by title: String, year: String, type: String)
 	func selectMovie(at index: Int)
+	func getNumberOfItems() -> Int
+	func getMoviePoster(at index: Int) -> UIImage?
+	func getMovieTitle(at index: Int) -> String
+	func getMovieYear(at index: Int) -> String
+	func getMovieType(at index: Int) -> String
+}
+
+extension MovieSearchListViewModelProtocol {
+	func search(by title: String, year: String = "", type: String = "") {
+		search(by: title, year: year, type: type)
+	}
+}
+
+enum MovieSearchListViewModelOutput: Equatable {
+	case setLoading(Bool)
+	case showMovieList
+}
+
+enum MovieSearchListViewRoute {
+	case detail(MovieSearchListViewModelProtocol)
 }
 
 protocol MovieSearchListViewModelDelegate: class {
-	
+	func handleViewModelOutput(_ output: MovieSearchListViewModelOutput)
+	func navigate(to route: MovieSearchListViewRoute)
 }
+

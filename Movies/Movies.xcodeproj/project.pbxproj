@@ -20,6 +20,10 @@
 		E827212F230AF7D00007ECD0 /* MovieSearchList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E827212E230AF7D00007ECD0 /* MovieSearchList.storyboard */; };
 		E8272189230B2FA20007ECD0 /* OMDBApi.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E827218B230B2FBF0007ECD0 /* OMDBApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E827217A230B1E150007ECD0 /* OMDBApi.framework */; };
+		E8272191230C55B90007ECD0 /* MovieSearchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272190230C55B90007ECD0 /* MovieSearchListCell.swift */; };
+		E8272195230C62550007ECD0 /* UITableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272194230C62550007ECD0 /* UITableViewExt.swift */; };
+		E8272197230C64860007ECD0 /* OptionalExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272196230C64860007ECD0 /* OptionalExt.swift */; };
+		E827219A230C6A800007ECD0 /* ToolbarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272199230C6A800007ECD0 /* ToolbarPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +81,10 @@
 		E827212C230AF79D0007ECD0 /* MovieSearchListContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchListContracts.swift; sourceTree = "<group>"; };
 		E827212E230AF7D00007ECD0 /* MovieSearchList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieSearchList.storyboard; sourceTree = "<group>"; };
 		E8272174230B1E150007ECD0 /* OMDBApi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OMDBApi.xcodeproj; path = ../OMDBApi/OMDBApi.xcodeproj; sourceTree = "<group>"; };
+		E8272190230C55B90007ECD0 /* MovieSearchListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchListCell.swift; sourceTree = "<group>"; };
+		E8272194230C62550007ECD0 /* UITableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExt.swift; sourceTree = "<group>"; };
+		E8272196230C64860007ECD0 /* OptionalExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalExt.swift; sourceTree = "<group>"; };
+		E8272199230C6A800007ECD0 /* ToolbarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,7 @@
 		E82720EE230AF45D0007ECD0 = {
 			isa = PBXGroup;
 			children = (
+				E8272192230C62280007ECD0 /* Utils */,
 				E8272173230B1E030007ECD0 /* Modules */,
 				E82720F9230AF45D0007ECD0 /* Movies */,
 				E827210E230AF45E0007ECD0 /* MoviesTests */,
@@ -181,6 +190,7 @@
 				E827212A230AF77C0007ECD0 /* MovieSearchListViewController.swift */,
 				E8272128230AF76B0007ECD0 /* MovieSearchListBuilder.swift */,
 				E827212E230AF7D00007ECD0 /* MovieSearchList.storyboard */,
+				E8272190230C55B90007ECD0 /* MovieSearchListCell.swift */,
 			);
 			path = MovieSearchList;
 			sourceTree = "<group>";
@@ -207,6 +217,32 @@
 				E827217C230B1E150007ECD0 /* OMDBApiTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E8272192230C62280007ECD0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E8272198230C6A6F0007ECD0 /* CustomViews */,
+				E8272193230C62330007ECD0 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E8272193230C62330007ECD0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E8272194230C62550007ECD0 /* UITableViewExt.swift */,
+				E8272196230C64860007ECD0 /* OptionalExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E8272198230C6A6F0007ECD0 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E8272199230C6A800007ECD0 /* ToolbarPickerView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,7 +382,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or if you have homebrew, just run 'brew install swiftlint'\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -358,9 +394,13 @@
 				E8272129230AF76B0007ECD0 /* MovieSearchListBuilder.swift in Sources */,
 				E8272127230AF7150007ECD0 /* MovieSearchListViewModel.swift in Sources */,
 				E8272120230AF4F50007ECD0 /* AppRouter.swift in Sources */,
+				E8272197230C64860007ECD0 /* OptionalExt.swift in Sources */,
 				E827212D230AF79D0007ECD0 /* MovieSearchListContracts.swift in Sources */,
+				E8272195230C62550007ECD0 /* UITableViewExt.swift in Sources */,
 				E827212B230AF77C0007ECD0 /* MovieSearchListViewController.swift in Sources */,
 				E82720FB230AF45D0007ECD0 /* AppDelegate.swift in Sources */,
+				E8272191230C55B90007ECD0 /* MovieSearchListCell.swift in Sources */,
+				E827219A230C6A800007ECD0 /* ToolbarPickerView.swift in Sources */,
 				E827211E230AF4E20007ECD0 /* AppContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

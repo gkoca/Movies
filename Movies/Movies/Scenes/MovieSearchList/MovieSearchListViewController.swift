@@ -10,20 +10,146 @@ import UIKit
 
 final class MovieSearchListViewController: UIViewController {
 	
-	 var viewModel: MovieSearchListViewModelProtocol!
+	
+	@IBOutlet weak var tableView: UITableView!
+	
+	@IBOutlet weak var searchBar: UISearchBar!
+	@IBOutlet weak var movieTypesSegment: UISegmentedControl!
+	@IBOutlet weak var yearTextField: UITextField!
+	let yearPicker = ToolbarPickerView()
+	var yearPickerDataSource = [String]()
+	var viewModel: MovieSearchListViewModelProtocol! {
+		didSet {
+			viewModel.delegate = self
+		}
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		yearPickerDataSource.append("Any Year")
+		yearPickerDataSource.append(contentsOf: Array(1890...2020).reversed().map { "\($0)" })
+		yearTextField.inputView = yearPicker
+		yearTextField.inputAccessoryView = yearPicker.toolbar
+		yearPicker.dataSource = self
+		yearPicker.delegate = self
+		yearPicker.toolbarDelegate = self
+		yearPicker.reloadAllComponents()
 		
-		app.service.searchMovies { (response) in
-			debugPrint(response)
-			debugPrint("==================================================")
-		}
+		searchBar.delegate = self
 		
-		app.service.fetchMovieDetailByTitle("superman") { (response) in
-			debugPrint(response)
-			debugPrint("==================================================")
-		}
+//		app.service.searchMovies { (response) in
+//			debugPrint(response)
+//			debugPrint("==================================================")
+//		}
+//
+//		app.service.fetchMovieDetailByTitle("superman") { (response) in
+//			debugPrint(response)
+//			debugPrint("==================================================")
+//		}
+		
+		
 		
 	}
+	
+	
+	@IBAction func movieTypesDidChange(_ sender: UISegmentedControl) {
+		search()
+	}
+	
+	func search() {
+		if !searchBar.text.isNilOrEmpty && searchBar.text!.count > 2 {
+			if movieTypesSegment.selectedSegmentIndex > 0 {
+				let type = movieTypesSegment.titleForSegment(at: movieTypesSegment.selectedSegmentIndex) ?? ""
+				if yearTextField.text != "Any Year" {
+					viewModel.search(by: searchBar.text!, year: yearTextField.text!, type: type)
+				} else {
+					viewModel.search(by: searchBar.text!, type: type)
+				}
+			} else {
+				viewModel.search(by: searchBar.text!, year: yearTextField.text!)
+			}
+		}
+	}
+}
+
+extension MovieSearchListViewController: UISearchBarDelegate {
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		search()
+	}
+}
+
+extension MovieSearchListViewController: UIPickerViewDelegate, UIPickerViewDataSource, ToolbarPickerViewDelegate {
+	
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		return 1
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		return yearPickerDataSource.count
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+		return yearPickerDataSource[row]
+	}
+	func didTapDone() {
+		let row = self.yearPicker.selectedRow(inComponent: 0)
+		self.yearPicker.selectRow(row, inComponent: 0, animated: false)
+		self.yearTextField.text = yearPickerDataSource[row]
+		self.yearTextField.resignFirstResponder()
+		search()
+	}
+	
+	func didTapCancel() {
+		self.yearTextField.resignFirstResponder()
+	}
+	
+}
+
+extension MovieSearchListViewController: MovieSearchListViewModelDelegate {
+	
+	func handleViewModelOutput(_ output: MovieSearchListViewModelOutput) {
+		switch output {
+		case .setLoading(_):
+			break
+		case .showMovieList:
+			tableView.reloadData()
+		}
+	}
+	
+	func navigate(to route: MovieSearchListViewRoute) {
+		
+	}
+	
+}
+
+extension MovieSearchListViewController: UITableViewDelegate {
+	
+}
+
+extension MovieSearchListViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		let number = viewModel.getNumberOfItems()
+		if searchBar.text.isNilOrEmpty {
+			tableView.setEmptyView(title: "Please Search", message: "Search for movies")
+		} else if number == 0 {
+			tableView.setEmptyView(title: "Upss...", message: "There is no result for given search parameters")
+		} else {
+			tableView.restore()
+		}
+		return number
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieSearchItem", for: indexPath) as? MovieSearchListCell else {
+			fatalError("could not dequeue tableViewCell")
+		}
+		
+		cell.posterView.image = viewModel.getMoviePoster(at: indexPath.row)
+		cell.titleLabel.text = viewModel.getMovieTitle(at: indexPath.row)
+		cell.yearLabel.text = viewModel.getMovieYear(at: indexPath.row)
+		cell.itemTypeLabel.text = viewModel.getMovieType(at: indexPath.row)
+		
+		return cell
+	}
+	
 }
