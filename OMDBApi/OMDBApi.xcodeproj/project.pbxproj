@@ -17,6 +17,8 @@
 		E8272168230B0F880007ECD0 /* MovieSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272167230B0F880007ECD0 /* MovieSearch.swift */; };
 		E827216A230B0F990007ECD0 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272169230B0F990007ECD0 /* MovieDetail.swift */; };
 		E827216E230B1D600007ECD0 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E827215A230B093B0007ECD0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E827219C230C98360007ECD0 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E827219B230C98360007ECD0 /* AlamofireImage.framework */; };
+		E827219D230C983F0007ECD0 /* AlamofireImage.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E827219B230C98360007ECD0 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E827219D230C983F0007ECD0 /* AlamofireImage.framework in Copy Frameworks */,
 				E827216E230B1D600007ECD0 /* Alamofire.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -56,6 +59,7 @@
 		E8272165230B0EA90007ECD0 /* OMDBApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBApiService.swift; sourceTree = "<group>"; };
 		E8272167230B0F880007ECD0 /* MovieSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearch.swift; sourceTree = "<group>"; };
 		E8272169230B0F990007ECD0 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		E827219B230C98360007ECD0 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Dependencies/Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E827215B230B093B0007ECD0 /* Alamofire.framework in Frameworks */,
+				E827219C230C98360007ECD0 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +126,7 @@
 		E8272159230B093B0007ECD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E827219B230C98360007ECD0 /* AlamofireImage.framework */,
 				E827215A230B093B0007ECD0 /* Alamofire.framework */,
 			);
 			name = Frameworks;

@@ -11,9 +11,11 @@ import UIKit
 protocol MovieSearchListViewModelProtocol {
 	var delegate: MovieSearchListViewModelDelegate? { get set }
 	func search(by title: String, year: String, type: String)
+	func loadMore()
 	func selectMovie(at index: Int)
 	func getNumberOfItems() -> Int
 	func getMoviePoster(at index: Int) -> UIImage?
+	func getMoviePoster(at index: Int, completion: @escaping (UIImage?) -> Void)
 	func getMovieTitle(at index: Int) -> String
 	func getMovieYear(at index: Int) -> String
 	func getMovieType(at index: Int) -> String
@@ -38,4 +40,3 @@ protocol MovieSearchListViewModelDelegate: class {
 	func handleViewModelOutput(_ output: MovieSearchListViewModelOutput)
 	func navigate(to route: MovieSearchListViewRoute)
 }
-

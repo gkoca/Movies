@@ -8,10 +8,11 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 
 //TODO: Seperate & cleanup
 public protocol MovieSearchServiceProtocol {
-	func searchMovies(completion: @escaping (Result<MovieSearch>) -> Void)
+	func searchMovies(by title: String, type: String, year: String, page: Int, completion: @escaping (Result<MovieSearch>) -> Void)
 }
 
 public protocol MovieDetailServiceProtocol {
@@ -19,11 +20,17 @@ public protocol MovieDetailServiceProtocol {
 	func fetchMovieDetailByTitle(_ title: String, completion: @escaping (Result<MovieDetail>) -> Void)
 }
 
-public protocol MovieServiceProtocol: MovieSearchServiceProtocol, MovieDetailServiceProtocol {
+public protocol MoviePosterDownloadProtocol {
+	func fetchPoster(_ url: String, completion: @escaping (Result<Image>) -> Void)
+}
+
+public protocol MovieServiceProtocol: MovieSearchServiceProtocol, MovieDetailServiceProtocol, MoviePosterDownloadProtocol {
 	
 }
 
 public class OMDBApiService: MovieServiceProtocol {
+	
+	
 	private var apiKey = ""
 	private var baseUrl = ""
 	
@@ -35,14 +42,34 @@ public class OMDBApiService: MovieServiceProtocol {
 	public init() {
 		if let key = Bundle(for: type(of: self)).object(forInfoDictionaryKey: "API_KEY") as? String {
 			apiKey = key
-			baseUrl = "https://www.omdbapi.com/?apikey=\(apiKey)&"
+			baseUrl = "http://www.omdbapi.com/?apikey=\(apiKey)&"
 		} else {
 			fatalError("can not get api key")
 		}
 	}
 	
-	public func searchMovies(completion: @escaping (Result<MovieSearch>) -> Void) {
-		let urlString = baseUrl + "s=Batman&page=2"
+	public func fetchPoster(_ url: String, completion: @escaping (Result<Image>) -> Void) {
+		request(url).responseImage { response in
+			switch response.result {
+			case .success(let image):
+				completion(.success(image))
+			case .failure(let error):
+				completion(.failure(Error.networkError(internal: error)))
+			}
+		}
+	}
+	
+	public func searchMovies(by title: String, type: String, year: String, page: Int, completion: @escaping (Result<MovieSearch>) -> Void) {
+		var urlString = baseUrl + "s=\(title)&page=\(page)"
+		if type.count > 0 && type.lowercased() != "any" {
+			urlString += "&type=\(type.lowercased())"
+		}
+		if let yearValue = Int(year), yearValue >= 1890, yearValue <= 2020 {
+			urlString += "&year=\(yearValue)"
+		}
+		debugPrint("==================================================")
+		debugPrint(urlString)
+		debugPrint("==================================================")
 		request(urlString).responseData { (response) in
 			switch response.result {
 			case .success(let data):

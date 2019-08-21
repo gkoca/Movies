@@ -109,9 +109,9 @@
                                         <rect key="frame" x="8" y="8" width="282" height="29"/>
                                         <segments>
                                             <segment title="Any"/>
-                                            <segment title="Movies"/>
+                                            <segment title="Movie"/>
                                             <segment title="Series"/>
-                                            <segment title="Episodes"/>
+                                            <segment title="Episode"/>
                                         </segments>
                                         <connections>
                                             <action selector="movieTypesDidChange:" destination="crf-ZP-ya7" eventType="valueChanged" id="SD0-ye-E7H"/>

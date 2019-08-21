@@ -10,14 +10,15 @@ import UIKit
 
 final class MovieSearchListViewController: UIViewController {
 	
-	
 	@IBOutlet weak var tableView: UITableView!
-	
 	@IBOutlet weak var searchBar: UISearchBar!
 	@IBOutlet weak var movieTypesSegment: UISegmentedControl!
 	@IBOutlet weak var yearTextField: UITextField!
+	
+	var searchTask: DispatchWorkItem?
 	let yearPicker = ToolbarPickerView()
 	var yearPickerDataSource = [String]()
+	
 	var viewModel: MovieSearchListViewModelProtocol! {
 		didSet {
 			viewModel.delegate = self
@@ -34,29 +35,33 @@ final class MovieSearchListViewController: UIViewController {
 		yearPicker.delegate = self
 		yearPicker.toolbarDelegate = self
 		yearPicker.reloadAllComponents()
-		
 		searchBar.delegate = self
-		
-//		app.service.searchMovies { (response) in
-//			debugPrint(response)
-//			debugPrint("==================================================")
-//		}
-//
+
 //		app.service.fetchMovieDetailByTitle("superman") { (response) in
 //			debugPrint(response)
 //			debugPrint("==================================================")
 //		}
 		
-		
-		
 	}
-	
 	
 	@IBAction func movieTypesDidChange(_ sender: UISegmentedControl) {
 		search()
 	}
 	
 	func search() {
+		if let task = searchTask {
+			task.cancel()
+			searchTask = nil
+		}
+		let task = DispatchWorkItem { [weak self] in
+			guard let self = self else { return }
+			self.sendSearchRequest()
+		}
+		self.searchTask = task
+		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
+	}
+	
+	func sendSearchRequest() {
 		if !searchBar.text.isNilOrEmpty && searchBar.text!.count > 2 {
 			if movieTypesSegment.selectedSegmentIndex > 0 {
 				let type = movieTypesSegment.titleForSegment(at: movieTypesSegment.selectedSegmentIndex) ?? ""
@@ -109,8 +114,8 @@ extension MovieSearchListViewController: MovieSearchListViewModelDelegate {
 	
 	func handleViewModelOutput(_ output: MovieSearchListViewModelOutput) {
 		switch output {
-		case .setLoading(_):
-			break
+		case .setLoading(let isLoading):
+			UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
 		case .showMovieList:
 			tableView.reloadData()
 		}
@@ -123,7 +128,13 @@ extension MovieSearchListViewController: MovieSearchListViewModelDelegate {
 }
 
 extension MovieSearchListViewController: UITableViewDelegate {
-	
+	func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+		let offsetY = scrollView.contentOffset.y
+		let contentHeight = scrollView.contentSize.height
+		if offsetY > contentHeight - scrollView.frame.size.height {
+			viewModel.loadMore()
+		}
+	}
 }
 
 extension MovieSearchListViewController: UITableViewDataSource {
@@ -143,11 +154,13 @@ extension MovieSearchListViewController: UITableViewDataSource {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieSearchItem", for: indexPath) as? MovieSearchListCell else {
 			fatalError("could not dequeue tableViewCell")
 		}
-		
-		cell.posterView.image = viewModel.getMoviePoster(at: indexPath.row)
 		cell.titleLabel.text = viewModel.getMovieTitle(at: indexPath.row)
 		cell.yearLabel.text = viewModel.getMovieYear(at: indexPath.row)
 		cell.itemTypeLabel.text = viewModel.getMovieType(at: indexPath.row)
+		
+		viewModel.getMoviePoster(at: indexPath.row) { (image) in
+			cell.posterView.image = image
+		}
 		
 		return cell
 	}
