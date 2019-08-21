@@ -14,7 +14,6 @@ public protocol MovieSearchServiceProtocol {
 
 public protocol MovieDetailServiceProtocol {
 	func fetchMovieDetailByIMDBId(_ id: String, completion: @escaping (Result<MovieDetail>) -> Void)
-	func fetchMovieDetailByTitle(_ title: String, completion: @escaping (Result<MovieDetail>) -> Void)
 }
 
 public protocol MoviePosterDownloadProtocol {

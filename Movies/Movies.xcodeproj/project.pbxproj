@@ -119,11 +119,11 @@
 		E82720EE230AF45D0007ECD0 = {
 			isa = PBXGroup;
 			children = (
-				E8272192230C62280007ECD0 /* Utils */,
 				E8272173230B1E030007ECD0 /* Modules */,
 				E82720F9230AF45D0007ECD0 /* Movies */,
 				E827210E230AF45E0007ECD0 /* MoviesTests */,
 				E82720F8230AF45D0007ECD0 /* Products */,
+				E8272192230C62280007ECD0 /* Utils */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,9 +139,9 @@
 		E82720F9230AF45D0007ECD0 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				E8272123230AF6150007ECD0 /* Scenes */,
 				E827211C230AF4910007ECD0 /* App */,
 				E8272121230AF5BD0007ECD0 /* Resources */,
+				E8272123230AF6150007ECD0 /* Scenes */,
 				E8272122230AF5D90007ECD0 /* Supporting Files */,
 			);
 			path = Movies;

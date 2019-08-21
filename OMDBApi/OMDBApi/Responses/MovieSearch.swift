@@ -9,6 +9,7 @@
 import Foundation
 
 public struct MovieSearch: Decodable {
+	
 	public let response: Bool?
 	public let search: [Search]?
 	public let totalResults: Int?
@@ -33,9 +34,11 @@ public struct MovieSearch: Decodable {
 		}
 		search = try values.decodeIfPresent([Search].self, forKey: .search)
 	}
+	
 }
 
 public struct Search: Decodable {
+	
 	public let imdbID, poster, title, type, year: String?
 
 	enum CodingKeys: String, CodingKey {
@@ -54,4 +57,5 @@ public struct Search: Decodable {
 		type = try values.decodeIfPresent(String.self, forKey: .type)
 		year = try values.decodeIfPresent(String.self, forKey: .year)
 	}
+	
 }

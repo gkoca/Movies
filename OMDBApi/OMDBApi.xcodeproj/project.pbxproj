@@ -105,11 +105,11 @@
 		E827213C230AFE660007ECD0 /* OMDBApi */ = {
 			isa = PBXGroup;
 			children = (
-				E827218F230B36060007ECD0 /* Supporting Files */,
-				E827215E230B0B870007ECD0 /* Responses */,
-				E827215C230B0B2C0007ECD0 /* Helpers */,
 				E8272165230B0EA90007ECD0 /* OMDBApiService.swift */,
 				E82721AB230DD0510007ECD0 /* OMDBApiServiceProtocols.swift */,
+				E827215C230B0B2C0007ECD0 /* Helpers */,
+				E827215E230B0B870007ECD0 /* Responses */,
+				E827218F230B36060007ECD0 /* Supporting Files */,
 			);
 			path = OMDBApi;
 			sourceTree = "<group>";
@@ -143,8 +143,8 @@
 		E827215E230B0B870007ECD0 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				E8272167230B0F880007ECD0 /* MovieSearch.swift */,
 				E8272169230B0F990007ECD0 /* MovieDetail.swift */,
+				E8272167230B0F880007ECD0 /* MovieSearch.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
