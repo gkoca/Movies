@@ -10,13 +10,12 @@ import Foundation
 
 public struct MovieDetail: Decodable {
 	
-	let actors, awards, boxOffice, country, director, genre, imdbID, imdbRating,
+	public let actors, awards, boxOffice, country, director, genre, imdbID, imdbRating,
 	imdbVotes, language, metascore, plot, poster, production, rated, runtime,
-	title, type, website, writer, year: String?
+	title, type, website, writer, year, DVD, released: String?
 	
-	let DVD, released: Date?
-	let ratings: [Rating]?
-	let response: Bool?
+	public let ratings: [Rating]?
+	public let response: Bool?
 	
 	enum CodingKeys: String, CodingKey {
 		case actors = "Actors"
@@ -53,7 +52,7 @@ public struct MovieDetail: Decodable {
 		boxOffice = try values.decodeIfPresent(String.self, forKey: .boxOffice)
 		country = try values.decodeIfPresent(String.self, forKey: .country)
 		director = try values.decodeIfPresent(String.self, forKey: .director)
-		DVD = try values.decodeIfPresent(Date.self, forKey: .dVD)
+		DVD = try values.decodeIfPresent(String.self, forKey: .dVD)
 		genre = try values.decodeIfPresent(String.self, forKey: .genre)
 		imdbID = try values.decodeIfPresent(String.self, forKey: .imdbID)
 		imdbRating = try values.decodeIfPresent(String.self, forKey: .imdbRating)
@@ -65,7 +64,7 @@ public struct MovieDetail: Decodable {
 		production = try values.decodeIfPresent(String.self, forKey: .production)
 		rated = try values.decodeIfPresent(String.self, forKey: .rated)
 		ratings = try values.decodeIfPresent([Rating].self, forKey: .ratings)
-		released = try values.decodeIfPresent(Date.self, forKey: .released)
+		released = try values.decodeIfPresent(String.self, forKey: .released)
 		if let responseValue = try? values.decodeIfPresent(String.self, forKey: .response), responseValue.lowercased() == "true" {
 			response = true
 		} else {
@@ -83,8 +82,8 @@ public struct MovieDetail: Decodable {
 
 public struct Rating: Decodable {
 	
-	let source: String?
-	let value: String?
+	public let source: String?
+	public let value: String?
 	
 	enum CodingKeys: String, CodingKey {
 		case source = "Source"

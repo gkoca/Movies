@@ -6,7 +6,6 @@
 //  Copyright © 2019 gkoca. All rights reserved.
 //
 
-import UIKit
 import Foundation
 import OMDBApi
 
@@ -46,8 +45,6 @@ final class MovieSearchListViewModel: MovieSearchListViewModelProtocol {
 	}
 	
 	private func processResult(_ result: Result<MovieSearch>) {
-		debugPrint(result)
-		debugPrint("==================================================")
 		self.notify(.setLoading(false))
 		switch result {
 		case .success(let response):
@@ -65,7 +62,10 @@ final class MovieSearchListViewModel: MovieSearchListViewModelProtocol {
 	}
 	
 	func selectMovie(at index: Int) {
-		
+		if let movieId = items[index].imdbID {
+			let viewModel = MovieDetailViewModel(with: movieId, and: service)
+			delegate?.navigate(to: .detail(viewModel))
+		}
 	}
 	
 	private func notify(_ output: MovieSearchListViewModelOutput) {
@@ -81,15 +81,18 @@ final class MovieSearchListViewModel: MovieSearchListViewModelProtocol {
 	}
 	
 	public func getMoviePoster(at index: Int, completion: @escaping (UIImage?) -> Void) {
-		if let url = items[index].poster {
+		if let url = items[index].poster, url != "N/A" {
 			service.fetchPoster(url) { (result) in
 				switch result {
 				case .success(let image):
 					completion(image)
-				case .failure(_):
+				case .failure(let error):
+					debugPrint(error)
 					completion(UIImage(named: "popcorn"))
 				}
 			}
+		} else {
+			completion(UIImage(named: "popcorn"))
 		}
 	}
 	

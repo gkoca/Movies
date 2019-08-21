@@ -10,26 +10,7 @@ import Foundation
 import Alamofire
 import AlamofireImage
 
-//TODO: Seperate & cleanup
-public protocol MovieSearchServiceProtocol {
-	func searchMovies(by title: String, type: String, year: String, page: Int, completion: @escaping (Result<MovieSearch>) -> Void)
-}
-
-public protocol MovieDetailServiceProtocol {
-	func fetchMovieDetailByIMDBId(_ id: String, completion: @escaping (Result<MovieDetail>) -> Void)
-	func fetchMovieDetailByTitle(_ title: String, completion: @escaping (Result<MovieDetail>) -> Void)
-}
-
-public protocol MoviePosterDownloadProtocol {
-	func fetchPoster(_ url: String, completion: @escaping (Result<Image>) -> Void)
-}
-
-public protocol MovieServiceProtocol: MovieSearchServiceProtocol, MovieDetailServiceProtocol, MoviePosterDownloadProtocol {
-	
-}
-
-public class OMDBApiService: MovieServiceProtocol {
-	
+public class OMDBApiService: OMDBApiServiceProtocol {
 	
 	private var apiKey = ""
 	private var baseUrl = ""
@@ -65,15 +46,12 @@ public class OMDBApiService: MovieServiceProtocol {
 			urlString += "&type=\(type.lowercased())"
 		}
 		if let yearValue = Int(year), yearValue >= 1890, yearValue <= 2020 {
-			urlString += "&year=\(yearValue)"
+			urlString += "&y=\(yearValue)"
 		}
-		debugPrint("==================================================")
-		debugPrint(urlString)
-		debugPrint("==================================================")
 		request(urlString).responseData { (response) in
 			switch response.result {
 			case .success(let data):
-				let decoder = Decoders.basicDateDecoder
+				let decoder = JSONDecoder()
 				do {
 					let response = try decoder.decode(MovieSearch.self, from: data)
 					completion(.success(response))
@@ -91,7 +69,7 @@ public class OMDBApiService: MovieServiceProtocol {
 		request(urlString).responseData { (response) in
 			switch response.result {
 			case .success(let data):
-				let decoder = Decoders.basicDateDecoder
+				let decoder = JSONDecoder()
 				do {
 					let response = try decoder.decode(MovieDetail.self, from: data)
 					completion(.success(response))
@@ -109,7 +87,7 @@ public class OMDBApiService: MovieServiceProtocol {
 		request(urlString).responseData { (response) in
 			switch response.result {
 			case .success(let data):
-				let decoder = Decoders.basicDateDecoder
+				let decoder = JSONDecoder()
 				do {
 					let response = try decoder.decode(MovieDetail.self, from: data)
 					completion(.success(response))

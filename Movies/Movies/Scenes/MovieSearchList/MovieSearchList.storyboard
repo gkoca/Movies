@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lo6-M1-v9X">
-                                <rect key="frame" x="0.0" y="132" width="414" height="730"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lo6-M1-v9X">
+                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="movieSearchItem" rowHeight="123" id="y18-88-SSv" customClass="MovieSearchListCell" customModule="Movies" customModuleProvider="target">
@@ -37,7 +37,7 @@
                                                         <constraint firstAttribute="width" secondItem="hvk-dr-2Gf" secondAttribute="height" multiplier="300:450" id="miQ-3d-Gie"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Batman: The Killing Joke" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAt-Gg-e7z">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAt-Gg-e7z">
                                                     <rect key="frame" x="95.5" y="11" width="298.5" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="7F5-sh-9Z4"/>
@@ -46,7 +46,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjr-kk-IYQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjr-kk-IYQ">
                                                     <rect key="frame" x="95.5" y="91" width="298.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3ke-AA-QqQ"/>
@@ -55,7 +55,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkG-Ro-yG5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkG-Ro-yG5">
                                                     <rect key="frame" x="95.5" y="63" width="298.5" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="ZI4-xg-gRP"/>
@@ -142,7 +142,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NdB-0W-zPY" firstAttribute="bottom" secondItem="lo6-M1-v9X" secondAttribute="bottom" id="8hh-Th-i1d"/>
+                            <constraint firstAttribute="bottom" secondItem="lo6-M1-v9X" secondAttribute="bottom" id="8hh-Th-i1d"/>
                             <constraint firstItem="95h-wQ-3jF" firstAttribute="trailing" secondItem="NdB-0W-zPY" secondAttribute="trailing" id="Amd-rS-dPl"/>
                             <constraint firstItem="P26-hn-JDO" firstAttribute="top" secondItem="95h-wQ-3jF" secondAttribute="bottom" id="Jw8-jA-wZN"/>
                             <constraint firstItem="95h-wQ-3jF" firstAttribute="leading" secondItem="NdB-0W-zPY" secondAttribute="leading" id="Lhy-Zu-XQ4"/>

@@ -33,7 +33,7 @@ enum MovieSearchListViewModelOutput: Equatable {
 }
 
 enum MovieSearchListViewRoute {
-	case detail(MovieSearchListViewModelProtocol)
+	case detail(MovieDetailViewModelProtocol)
 }
 
 protocol MovieSearchListViewModelDelegate: class {

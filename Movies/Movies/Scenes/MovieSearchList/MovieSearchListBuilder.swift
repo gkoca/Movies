@@ -12,11 +12,10 @@ final class MovieSearchListBuilder {
 	
 	static func make() -> MovieSearchListViewController {
 		let storyboard = UIStoryboard(name: "MovieSearchList", bundle: nil)
-		if let viewController = storyboard.instantiateViewController(withIdentifier: "MovieSearchListViewController") as? MovieSearchListViewController {
-			viewController.viewModel = MovieSearchListViewModel(with: app.service)
-			return viewController
-		} else {
+		guard let viewController = storyboard.instantiateViewController(withIdentifier: "MovieSearchListViewController") as? MovieSearchListViewController else {
 			fatalError("MovieSearchListViewController could not instantiate")
 		}
+		viewController.viewModel = MovieSearchListViewModel(with: app.service)
+		return viewController
 	}
 }

@@ -12,13 +12,13 @@
 		E827214B230AFE660007ECD0 /* OMDBApi.h in Headers */ = {isa = PBXBuildFile; fileRef = E827213D230AFE660007ECD0 /* OMDBApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E827215B230B093B0007ECD0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E827215A230B093B0007ECD0 /* Alamofire.framework */; };
 		E8272162230B0C0E0007ECD0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272161230B0C0E0007ECD0 /* Result.swift */; };
-		E8272164230B0C650007ECD0 /* Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272163230B0C650007ECD0 /* Decoders.swift */; };
 		E8272166230B0EA90007ECD0 /* OMDBApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272165230B0EA90007ECD0 /* OMDBApiService.swift */; };
 		E8272168230B0F880007ECD0 /* MovieSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272167230B0F880007ECD0 /* MovieSearch.swift */; };
 		E827216A230B0F990007ECD0 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272169230B0F990007ECD0 /* MovieDetail.swift */; };
 		E827216E230B1D600007ECD0 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E827215A230B093B0007ECD0 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E827219C230C98360007ECD0 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E827219B230C98360007ECD0 /* AlamofireImage.framework */; };
 		E827219D230C983F0007ECD0 /* AlamofireImage.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E827219B230C98360007ECD0 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E82721AC230DD0510007ECD0 /* OMDBApiServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82721AB230DD0510007ECD0 /* OMDBApiServiceProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,11 +55,11 @@
 		E827214A230AFE660007ECD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E827215A230B093B0007ECD0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Dependencies/Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		E8272161230B0C0E0007ECD0 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		E8272163230B0C650007ECD0 /* Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoders.swift; sourceTree = "<group>"; };
 		E8272165230B0EA90007ECD0 /* OMDBApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBApiService.swift; sourceTree = "<group>"; };
 		E8272167230B0F880007ECD0 /* MovieSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearch.swift; sourceTree = "<group>"; };
 		E8272169230B0F990007ECD0 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		E827219B230C98360007ECD0 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Dependencies/Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		E82721AB230DD0510007ECD0 /* OMDBApiServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBApiServiceProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +107,9 @@
 			children = (
 				E827218F230B36060007ECD0 /* Supporting Files */,
 				E827215E230B0B870007ECD0 /* Responses */,
-				E827215D230B0B380007ECD0 /* DataTransferObjects */,
 				E827215C230B0B2C0007ECD0 /* Helpers */,
 				E8272165230B0EA90007ECD0 /* OMDBApiService.swift */,
+				E82721AB230DD0510007ECD0 /* OMDBApiServiceProtocols.swift */,
 			);
 			path = OMDBApi;
 			sourceTree = "<group>";
@@ -136,16 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				E8272161230B0C0E0007ECD0 /* Result.swift */,
-				E8272163230B0C650007ECD0 /* Decoders.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		E827215D230B0B380007ECD0 /* DataTransferObjects */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataTransferObjects;
 			sourceTree = "<group>";
 		};
 		E827215E230B0B870007ECD0 /* Responses */ = {
@@ -298,8 +290,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8272162230B0C0E0007ECD0 /* Result.swift in Sources */,
+				E82721AC230DD0510007ECD0 /* OMDBApiServiceProtocols.swift in Sources */,
 				E827216A230B0F990007ECD0 /* MovieDetail.swift in Sources */,
-				E8272164230B0C650007ECD0 /* Decoders.swift in Sources */,
 				E8272166230B0EA90007ECD0 /* OMDBApiService.swift in Sources */,
 				E8272168230B0F880007ECD0 /* MovieSearch.swift in Sources */,
 			);

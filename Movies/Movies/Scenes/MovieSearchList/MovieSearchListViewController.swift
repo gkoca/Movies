@@ -36,12 +36,8 @@ final class MovieSearchListViewController: UIViewController {
 		yearPicker.toolbarDelegate = self
 		yearPicker.reloadAllComponents()
 		searchBar.delegate = self
-
-//		app.service.fetchMovieDetailByTitle("superman") { (response) in
-//			debugPrint(response)
-//			debugPrint("==================================================")
-//		}
-		
+		title = "Search in OMDB"
+		searchBar.becomeFirstResponder()
 	}
 	
 	@IBAction func movieTypesDidChange(_ sender: UISegmentedControl) {
@@ -78,9 +74,11 @@ final class MovieSearchListViewController: UIViewController {
 }
 
 extension MovieSearchListViewController: UISearchBarDelegate {
+	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		search()
 	}
+	
 }
 
 extension MovieSearchListViewController: UIPickerViewDelegate, UIPickerViewDataSource, ToolbarPickerViewDelegate {
@@ -96,18 +94,18 @@ extension MovieSearchListViewController: UIPickerViewDelegate, UIPickerViewDataS
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 		return yearPickerDataSource[row]
 	}
+	
 	func didTapDone() {
-		let row = self.yearPicker.selectedRow(inComponent: 0)
-		self.yearPicker.selectRow(row, inComponent: 0, animated: false)
-		self.yearTextField.text = yearPickerDataSource[row]
-		self.yearTextField.resignFirstResponder()
+		let row = yearPicker.selectedRow(inComponent: 0)
+		yearPicker.selectRow(row, inComponent: 0, animated: false)
+		yearTextField.text = yearPickerDataSource[row]
+		yearTextField.resignFirstResponder()
 		search()
 	}
 	
 	func didTapCancel() {
-		self.yearTextField.resignFirstResponder()
+		yearTextField.resignFirstResponder()
 	}
-	
 }
 
 extension MovieSearchListViewController: MovieSearchListViewModelDelegate {
@@ -122,12 +120,17 @@ extension MovieSearchListViewController: MovieSearchListViewModelDelegate {
 	}
 	
 	func navigate(to route: MovieSearchListViewRoute) {
-		
+		switch route {
+		case .detail(let viewModel):
+			let viewController = MovieDetailBuilder.make(with: viewModel)
+			show(viewController, sender: nil)
+		}
 	}
 	
 }
 
 extension MovieSearchListViewController: UITableViewDelegate {
+	
 	func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
 		let offsetY = scrollView.contentOffset.y
 		let contentHeight = scrollView.contentSize.height
@@ -135,15 +138,22 @@ extension MovieSearchListViewController: UITableViewDelegate {
 			viewModel.loadMore()
 		}
 	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+		viewModel.selectMovie(at: indexPath.row)
+	}
+	
 }
 
 extension MovieSearchListViewController: UITableViewDataSource {
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		let number = viewModel.getNumberOfItems()
 		if searchBar.text.isNilOrEmpty {
 			tableView.setEmptyView(title: "Please Search", message: "Search for movies")
 		} else if number == 0 {
-			tableView.setEmptyView(title: "Upss...", message: "There is no result for given search parameters")
+			tableView.setEmptyView(title: "Oops...", message: "There is no result for given search parameters")
 		} else {
 			tableView.restore()
 		}
@@ -157,11 +167,9 @@ extension MovieSearchListViewController: UITableViewDataSource {
 		cell.titleLabel.text = viewModel.getMovieTitle(at: indexPath.row)
 		cell.yearLabel.text = viewModel.getMovieYear(at: indexPath.row)
 		cell.itemTypeLabel.text = viewModel.getMovieType(at: indexPath.row)
-		
 		viewModel.getMoviePoster(at: indexPath.row) { (image) in
 			cell.posterView.image = image
 		}
-		
 		return cell
 	}
 	
