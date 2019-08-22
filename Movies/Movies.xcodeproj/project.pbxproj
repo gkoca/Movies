@@ -32,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		76096FE3230E761900DF4938 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8272174230B1E150007ECD0 /* OMDBApi.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E8272139230AFE660007ECD0;
+			remoteInfo = OMDBApi;
+		};
 		E827210C230AF45E0007ECD0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E82720EF230AF45D0007ECD0 /* Project object */;
@@ -272,10 +279,12 @@
 				E82720F5230AF45D0007ECD0 /* Resources */,
 				E8272154230B02790007ECD0 /* ShellScript */,
 				E8272188230B2F8C0007ECD0 /* Copy Frameworks */,
+				7609758E230E7D0A00DF4938 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				76096FE4230E761900DF4938 /* PBXTargetDependency */,
 			);
 			name = Movies;
 			productName = Movies;
@@ -383,6 +392,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7609758E230E7D0A00DF4938 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../OMDBApi/Dependencies/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/../OMDBApi/Dependencies/Carthage/Build/iOS/AlamofireImage.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 		E8272154230B02790007ECD0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,6 +466,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		76096FE4230E761900DF4938 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OMDBApi;
+			targetProxy = 76096FE3230E761900DF4938 /* PBXContainerItemProxy */;
+		};
 		E827210D230AF45E0007ECD0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E82720F6230AF45D0007ECD0 /* Movies */;
@@ -576,8 +611,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K35J6EG8VZ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Movies/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -594,8 +630,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K35J6EG8VZ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Movies/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
