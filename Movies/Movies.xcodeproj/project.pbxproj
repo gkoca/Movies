@@ -279,7 +279,7 @@
 				E82720F5230AF45D0007ECD0 /* Resources */,
 				E8272154230B02790007ECD0 /* ShellScript */,
 				E8272188230B2F8C0007ECD0 /* Copy Frameworks */,
-				7609758E230E7D0A00DF4938 /* ShellScript */,
+				E8044731231B31A90059972B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -392,7 +392,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7609758E230E7D0A00DF4938 /* ShellScript */ = {
+		E8044731231B31A90059972B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -400,8 +400,8 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/../OMDBApi/Dependencies/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/../OMDBApi/Dependencies/Carthage/Build/iOS/AlamofireImage.framework",
+				"$(BUILT_PRODUCTS_DIR)/Alamofire.framework",
+				"$(BUILT_PRODUCTS_DIR)/AlamofireImage.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -611,7 +611,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K35J6EG8VZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Movies/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -630,7 +630,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K35J6EG8VZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Movies/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
