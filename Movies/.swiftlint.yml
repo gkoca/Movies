@@ -22,6 +22,11 @@ custom_rules:
     regex: "override (open|public|private|internal|fileprivate)" # matching pattern
     message: "Use like open override or public override instead" # violation message. optional.
     severity: warning # violation severity. optional.
+  forbidden_import:
+    name: "forbidden import"
+    regex: "import (AlamofireImage|Alamofire)"
+    message: "Import is forbidden for this project."
+    severity: error
 
 line_length: 190
 cyclomatic_complexity: 20
