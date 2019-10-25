@@ -44,7 +44,7 @@ final class MovieSearchListViewModel: MovieSearchListViewModelProtocol {
 		}
 	}
 	
-	private func processResult(_ result: Result<MovieSearch>) {
+	private func processResult(_ result: Result<MovieSearch, Error>) {
 		self.notify(.setLoading(false))
 		switch result {
 		case .success(let response):

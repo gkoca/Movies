@@ -12,7 +12,6 @@
 		E8272144230AFE660007ECD0 /* OMDBApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E827213A230AFE660007ECD0 /* OMDBApi.framework */; };
 		E8272149230AFE660007ECD0 /* OMDBApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272148230AFE660007ECD0 /* OMDBApiTests.swift */; };
 		E827214B230AFE660007ECD0 /* OMDBApi.h in Headers */ = {isa = PBXBuildFile; fileRef = E827213D230AFE660007ECD0 /* OMDBApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E8272162230B0C0E0007ECD0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272161230B0C0E0007ECD0 /* Result.swift */; };
 		E8272166230B0EA90007ECD0 /* OMDBApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272165230B0EA90007ECD0 /* OMDBApiService.swift */; };
 		E8272168230B0F880007ECD0 /* MovieSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272167230B0F880007ECD0 /* MovieSearch.swift */; };
 		E827216A230B0F990007ECD0 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8272169230B0F990007ECD0 /* MovieDetail.swift */; };
@@ -156,7 +155,6 @@
 		E8272143230AFE660007ECD0 /* OMDBApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMDBApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8272148230AFE660007ECD0 /* OMDBApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBApiTests.swift; sourceTree = "<group>"; };
 		E827214A230AFE660007ECD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E8272161230B0C0E0007ECD0 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E8272165230B0EA90007ECD0 /* OMDBApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDBApiService.swift; sourceTree = "<group>"; };
 		E8272167230B0F880007ECD0 /* MovieSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearch.swift; sourceTree = "<group>"; };
 		E8272169230B0F990007ECD0 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 			children = (
 				E8272165230B0EA90007ECD0 /* OMDBApiService.swift */,
 				E82721AB230DD0510007ECD0 /* OMDBApiServiceProtocols.swift */,
-				E827215C230B0B2C0007ECD0 /* Helpers */,
 				E827215E230B0B870007ECD0 /* Responses */,
 				E827218F230B36060007ECD0 /* Supporting Files */,
 			);
@@ -260,14 +257,6 @@
 				E80446F9231B1D820059972B /* AlamofireImage.xcodeproj */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E827215C230B0B2C0007ECD0 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				E8272161230B0C0E0007ECD0 /* Result.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E827215E230B0B870007ECD0 /* Responses */ = {
@@ -538,7 +527,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8272162230B0C0E0007ECD0 /* Result.swift in Sources */,
 				E82721AC230DD0510007ECD0 /* OMDBApiServiceProtocols.swift in Sources */,
 				E827216A230B0F990007ECD0 /* MovieDetail.swift in Sources */,
 				E8272166230B0EA90007ECD0 /* OMDBApiService.swift in Sources */,

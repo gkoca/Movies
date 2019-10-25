@@ -15,10 +15,7 @@ public class OMDBApiService: OMDBApiServiceProtocol {
 	private var apiKey = ""
 	private var baseUrl = "http://www.omdbapi.com"
 	
-	public enum Error: Swift.Error {
-		case serializationError(internal: Swift.Error)
-		case networkError(internal: Swift.Error)
-	}
+	
 	
 	public init() {
 		if let key = Bundle(for: type(of: self)).object(forInfoDictionaryKey: "API_KEY") as? String {
@@ -28,7 +25,7 @@ public class OMDBApiService: OMDBApiServiceProtocol {
 		}
 	}
 	
-	public func fetchPoster(_ url: String, completion: @escaping (Result<Image>) -> Void) {
+	public func fetchPoster(_ url: String, completion: @escaping (Swift.Result<Image, Error>) -> Void) {
 		request(url).responseImage { response in
 			switch response.result {
 			case .success(let image):
@@ -39,7 +36,7 @@ public class OMDBApiService: OMDBApiServiceProtocol {
 		}
 	}
 	
-	public func searchMovies(by title: String, type: String, year: String, page: Int, completion: @escaping (Result<MovieSearch>) -> Void) {
+	public func searchMovies(by title: String, type: String, year: String, page: Int, completion: @escaping (Swift.Result<MovieSearch, Error>) -> Void) {
 		var params = ["apikey": apiKey,
 					  "s": title,
 					  "page": "\(page)"
@@ -66,7 +63,7 @@ public class OMDBApiService: OMDBApiServiceProtocol {
 		}
 	}
 	
-	public func fetchMovieDetailByIMDBId(_ id: String, completion: @escaping (Result<MovieDetail>) -> Void) {
+	public func fetchMovieDetailByIMDBId(_ id: String, completion: @escaping (Swift.Result<MovieDetail, Error>) -> Void) {
 		let params = ["apikey": apiKey,
 					  "i": id,
 					  "plot": "full"
