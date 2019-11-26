@@ -14,9 +14,7 @@ public class OMDBApiService: OMDBApiServiceProtocol {
 	
 	private var apiKey = ""
 	private var baseUrl = "http://www.omdbapi.com"
-	
-	
-	
+
 	public init() {
 		if let key = Bundle(for: type(of: self)).object(forInfoDictionaryKey: "API_KEY") as? String {
 			apiKey = key

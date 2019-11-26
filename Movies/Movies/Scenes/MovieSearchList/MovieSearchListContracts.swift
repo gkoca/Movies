@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MovieSearchListViewModelProtocol {
-	var delegate: MovieSearchListViewModelDelegate? { get set }
+	var notifier: ((MovieSearchListViewModelOutput) -> Void)? { get set }
 	func search(by title: String, year: String, type: String)
 	func loadMore()
 	func selectMovie(at index: Int)
@@ -27,16 +27,12 @@ extension MovieSearchListViewModelProtocol {
 	}
 }
 
-enum MovieSearchListViewModelOutput: Equatable {
+enum MovieSearchListViewModelOutput {
 	case setLoading(Bool)
 	case showMovieList
+	case navigate(MovieSearchListViewRoute)
 }
 
 enum MovieSearchListViewRoute {
 	case detail(MovieDetailViewModelProtocol)
-}
-
-protocol MovieSearchListViewModelDelegate: class {
-	func handleViewModelOutput(_ output: MovieSearchListViewModelOutput)
-	func navigate(to route: MovieSearchListViewRoute)
 }

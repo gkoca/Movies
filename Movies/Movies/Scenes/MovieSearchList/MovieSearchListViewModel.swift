@@ -11,7 +11,8 @@ import OMDBApi
 
 final class MovieSearchListViewModel: MovieSearchListViewModelProtocol {
 	
-	weak var delegate: MovieSearchListViewModelDelegate?
+	var notifier: ((MovieSearchListViewModelOutput) -> Void)?
+		
 	private let service: OMDBApiService
 	private var items = [Search]()
 	private var totalResults = 0
@@ -64,12 +65,13 @@ final class MovieSearchListViewModel: MovieSearchListViewModelProtocol {
 	func selectMovie(at index: Int) {
 		if let movieId = items[index].imdbID {
 			let viewModel = MovieDetailViewModel(with: movieId, and: service)
-			delegate?.navigate(to: .detail(viewModel))
+			notify(.navigate(.detail(viewModel)))
 		}
 	}
 	
 	private func notify(_ output: MovieSearchListViewModelOutput) {
-		delegate?.handleViewModelOutput(output)
+		guard let handler = notifier else { return }
+		handler(output)
 	}
 	
 	func getNumberOfItems() -> Int {

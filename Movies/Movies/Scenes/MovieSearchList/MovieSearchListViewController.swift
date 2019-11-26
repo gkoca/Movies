@@ -14,6 +14,7 @@ final class MovieSearchListViewController: UIViewController {
 	@IBOutlet weak var searchBar: UISearchBar!
 	@IBOutlet weak var movieTypesSegment: UISegmentedControl!
 	@IBOutlet weak var yearTextField: UITextField!
+	@IBOutlet weak var backgroundView: UIView!
 	
 	var searchTask: DispatchWorkItem?
 	let yearPicker = ToolbarPickerView()
@@ -21,7 +22,7 @@ final class MovieSearchListViewController: UIViewController {
 	
 	var viewModel: MovieSearchListViewModelProtocol! {
 		didSet {
-			viewModel.delegate = self
+			viewModel.notifier = notifier(output:)
 		}
 	}
 	
@@ -38,6 +39,35 @@ final class MovieSearchListViewController: UIViewController {
 		searchBar.delegate = self
 		title = "Search in OMDB"
 		searchBar.becomeFirstResponder()
+		
+		let insets = UIEdgeInsets(top: 90, left: 0, bottom: 0, right: 0)
+		tableView.contentInset = insets
+		tableView.scrollIndicatorInsets = insets
+		addBlurEffect(toView: backgroundView)
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+		navigationController?.navigationBar.shadowImage = UIImage()
+		navigationController?.navigationBar.isTranslucent = true
+		navigationController?.view.backgroundColor = .clear
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+		self.navigationController?.navigationBar.shadowImage = nil
+	}
+	
+	func addBlurEffect(toView view: UIView?) {
+		guard let view = view else { return }
+		let blurEffect = UIBlurEffect(style: .dark)
+		let visualEffectView = UIVisualEffectView(effect: blurEffect)
+		visualEffectView.isUserInteractionEnabled = false
+		visualEffectView.frame = view.bounds
+		visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		view.insertSubview(visualEffectView, at: 0)
 	}
 	
 	@IBAction func movieTypesDidChange(_ sender: UISegmentedControl) {
@@ -78,7 +108,6 @@ extension MovieSearchListViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		search()
 	}
-	
 }
 
 extension MovieSearchListViewController: UIPickerViewDelegate, UIPickerViewDataSource, ToolbarPickerViewDelegate {
@@ -108,25 +137,21 @@ extension MovieSearchListViewController: UIPickerViewDelegate, UIPickerViewDataS
 	}
 }
 
-extension MovieSearchListViewController: MovieSearchListViewModelDelegate {
-	
-	func handleViewModelOutput(_ output: MovieSearchListViewModelOutput) {
+extension MovieSearchListViewController {
+	func notifier(output: MovieSearchListViewModelOutput) {
 		switch output {
 		case .setLoading(let isLoading):
 			UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
 		case .showMovieList:
 			tableView.reloadData()
+		case .navigate(let route):
+			switch route {
+			case .detail(let viewModel):
+				let viewController = MovieDetailBuilder.make(with: viewModel)
+				show(viewController, sender: nil)
+			}
 		}
 	}
-	
-	func navigate(to route: MovieSearchListViewRoute) {
-		switch route {
-		case .detail(let viewModel):
-			let viewController = MovieDetailBuilder.make(with: viewModel)
-			show(viewController, sender: nil)
-		}
-	}
-	
 }
 
 extension MovieSearchListViewController: UITableViewDelegate {
@@ -151,7 +176,6 @@ extension MovieSearchListViewController: UITableViewDelegate {
 		tableView.deselectRow(at: indexPath, animated: true)
 		viewModel.selectMovie(at: indexPath.row)
 	}
-	
 }
 
 extension MovieSearchListViewController: UITableViewDataSource {
@@ -180,5 +204,4 @@ extension MovieSearchListViewController: UITableViewDataSource {
 		}
 		return cell
 	}
-	
 }
